@@ -3,7 +3,6 @@ export OSP_GUID=23a7
 export OPENTLC_ID=tulio.manrique-ibm.com
 export OSP_DOMAIN=green.osp.opentlc.com
 export TOWER_GUID=8672
-export OPENTLC_PASSWORD=x@HG87$G!hFj@$V
 export GITHUB_REPO=https://github.com/trmave/nextgen_ansible_advanced_homework.git
 export JQ_REPO_BASE=http://www.opentlc.com/download/ansible_bootcamp
 export REGION=us-east-1
