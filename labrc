@@ -1,3 +1,4 @@
+export OPENTLC_KEY=/root/.ssh/mykey.pem
 export OSP_GUID=23a7
 export OPENTLC_ID=tulio.manrique-ibm.com
 export OSP_DOMAIN=green.osp.opentlc.com
@@ -12,7 +13,7 @@ osp_GUID=${OSP_GUID}
 ANSIBLE_VAR="
 	osp_DOMAIN=${OSP_DOMAIN}
 	opentlc_login=${OPENTLC_LOGIN}
-	path_to_opentlc_key=/root/.ssh/mykey.pem  
+	path_to_opentlc_key=${OPENTLC_KEY}
 	param_repo_base=${JQ_REPO_BASE}
 	opentlc_password=${OPENTLC_PASSWORD}  
 	REGION_NAME=${REGION}  
