@@ -1,5 +1,15 @@
 - name: Create Homework Assignment project
-
+  tower_project:
+    name: "{{ proj_name }}"
+    description: "Homework Assignment project"
+    organization: "{{ org_name }}"
+    scm_type: "git"
+    scm_url: "{{ scm_url }}"
+    scm_branch: "{{ scm_branch }}"
+    scm_update_on_launch: True
+    scm_update_cache_timeout: 60    
+    tower_host: tower1.{{tower_GUID}}.example.opentlc.com
+    state: present
 
 - name: Machine Credentail to connect to workstation using openstack.pub
   tower_credential:
