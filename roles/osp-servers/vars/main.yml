@@ -1,5 +1,57 @@
 ---
 # vars file for osp.servers
+cloud_name: openstack
+
+servers:
+  - app1:
+      name: app1
+      image: rhel-guest
+      key_name: ansible_ssh
+      flavor: m1.medium
+      security_group: apps
+      net_name: int_network
+      floating_ip_address: ext_network
+      meta: group=apps, deployment_name=QA
+      userdata: |
+                #!/bin/bash
+                curl -o /tmp/openstack.pub http://www.opentlc.com/download/ansible_bootcamp/openstack_keys/openstack.pub cat /tmp/openstack.pub >> /home/cloud-user/.ssh/authorized_keys
+  - app2:
+      name: app2
+      image: rhel-guest
+      key_name: ansible_ssh
+      flavor: m1.medium
+      security_group: apps
+      net_name: int_network
+      floating_ip_address: ext_network
+      meta: group=apps, deployment_name=QA
+      userdata: |
+                #!/bin/bash
+                curl -o /tmp/openstack.pub http://www.opentlc.com/download/ansible_bootcamp/openstack_keys/openstack.pub cat /tmp/openstack.pub >> /home/cloud-user/.ssh/authorized_keys
+  - db:
+      name: db
+      image: rhel-guest
+      key_name: ansible_ssh
+      flavor: m1.medium
+      security_group: db
+      net_name: int_network
+      floating_ip_address: ext_network
+      meta: group=apps, deployment_name=QA
+      userdata: |
+              #!/bin/bash
+              curl -o /tmp/openstack.pub http://www.opentlc.com/download/ansible_bootcamp/openstack_keys/openstack.pub cat /tmp/openstack.pub >> /home/cloud-user/.ssh/authorized_keys
+  - frontend:
+      name: frontend
+      image: rhel-guest
+      key_name: ansible_ssh
+      flavor: m1.medium
+      security_group: frontend
+      net_name: int_network
+      floating_ip_address: ext_network
+      meta: group=apps, deployment_name=QA
+      userdata: |
+              #!/bin/bash
+              curl -o /tmp/openstack.pub http://www.opentlc.com/download/ansible_bootcamp/openstack_keys/openstack.pub cat /tmp/openstack.pub >> /home/cloud-user/.ssh/authorized_keys
+              
 osp_servers:
   frontend:
     name: frontend
