@@ -4,8 +4,8 @@
   tasks:
   - name: Create workstation inventory
     add_host:
-       name: "workstation-{{OSP_GUID}}.{{OSP_DOMAIN}}"
-       group: workstation
+      name: "workstation-{{OSP_GUID}}.{{OSP_DOMAIN}}"
+      group: workstation
       ansible_ssh_private_key_file: ~/.ssh/openstack.pem
       ansible_ssh_user: cloud-user
 
