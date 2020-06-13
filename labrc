@@ -10,7 +10,7 @@ export REGION=us-east-1
 export MAIL_ID=tulio.manrique@ibm.com
 tower_GUID=${TOWER_GUID} 
 osp_GUID=${OSP_GUID} 
-ANSIBLE_VAR="
+ANSIBLE_VAR='
 osp_DOMAIN=${OSP_DOMAIN}
 opentlc_login=${OPENTLC_LOGIN}
 path_to_opentlc_key=${OPENTLC_KEY}
@@ -18,4 +18,5 @@ param_repo_base=${JQ_REPO_BASE}
 opentlc_password=${OPENTLC_PASSWORD}  
 REGION_NAME=${REGION}  
 EMAIL=${MAIL_ID}  
-github_repo=${GITHUB_REPO}"
+github_repo=${GITHUB_REPO}
+'
