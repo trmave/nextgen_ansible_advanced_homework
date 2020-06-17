@@ -11,7 +11,7 @@ osp_servers:
       security_group: apps
       net_name: int_network
       floating_ip_address: ext_network
-      meta: group=apps-servers, deployment_name=QA
+      meta: group=apps-servers,deployment_name=QA
       userdata: |
                 #!/bin/bash
                 curl -o /tmp/openstack.pub http://www.opentlc.com/download/ansible_bootcamp/openstack_keys/openstack.pub 
@@ -29,7 +29,7 @@ osp_servers:
       security_group: apps
       net_name: int_network
       floating_ip_address: ext_network
-      meta: group=apps_servers, deployment_name=QA
+      meta: group=apps_servers,deployment_name=QA
       userdata: |
                 #!/bin/bash
                 curl -o /tmp/openstack.pub http://www.opentlc.com/download/ansible_bootcamp/openstack_keys/openstack.pub 
@@ -47,7 +47,7 @@ osp_servers:
       security_group: db
       net_name: int_network
       floating_ip_address: ext_network
-      meta: group=databases_servers, deployment_name=QA
+      meta: group=databases_servers,deployment_name=QA
       userdata: |
                 #!/bin/bash
                 curl -o /tmp/openstack.pub http://www.opentlc.com/download/ansible_bootcamp/openstack_keys/openstack.pub 
@@ -65,7 +65,7 @@ osp_servers:
       security_group: frontend
       net_name: int_network
       floating_ip_address: ext_network
-      meta: group=frontends_servers, deployment_name=QA
+      meta: group=frontends_servers,deployment_name=QA
       userdata: |
                 #!/bin/bash
                 curl -o /tmp/openstack.pub http://www.opentlc.com/download/ansible_bootcamp/openstack_keys/openstack.pub 
