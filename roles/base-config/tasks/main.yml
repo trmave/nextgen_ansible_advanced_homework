@@ -9,6 +9,36 @@
     backup: yes
 
 - name: enable repos
- 
+  template:
+    src: repos_template.j2
+    dest: /etc/yum.repos.d/open_three-tier-app.repo
+    mode: 0644
+
+- name: stat internal
+  stat: path=/etc/yum.repos.d/internal.repo
+  register: int_stat
+
+- name: rm internal
+  command: rm /etc/yum.repos.d/internal.repo
+  when: int_stat.stat.exists
+
+- name: stat epel
+  stat: path=/etc/yum.repos.d/epel*
+  register: epel_stat
+
+- name: rm epel    
+  command: rm /etc/yum.repos.d/epel*
+  when: epel_stat.stat.exists
+
+
+- name: Run yum clean
+  command: yum clean all
+
 - name: install base tools and packages
+  yum:
+    name: 
+      - python3
+      - git
+      - ansible
+    state: present
 
