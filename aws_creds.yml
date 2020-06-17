@@ -15,6 +15,11 @@
     pip:
      name: ansible-tower-cli
      state: latest
+  - name: Install selinux
+    pip:
+     name: selinux
+     state: latest
+    
   - name: List key files
     shell: (cd /root/.ssh; find . -maxdepth 1 -type f -iname '*key.pem')| cut -d'/' -f2
     register: file_to_copy
