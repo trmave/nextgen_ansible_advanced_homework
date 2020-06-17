@@ -11,10 +11,16 @@ servers:
       security_group: apps
       net_name: int_network
       floating_ip_address: ext_network
-      meta: group=apps, deployment_name=QA
+      meta: group=apps-servers, deployment_name=QA
       userdata: |
                 #!/bin/bash
-                curl -o /tmp/openstack.pub http://www.opentlc.com/download/ansible_bootcamp/openstack_keys/openstack.pub cat /tmp/openstack.pub >> /home/cloud-user/.ssh/authorized_keys
+                curl -o /tmp/openstack.pub http://www.opentlc.com/download/ansible_bootcamp/openstack_keys/openstack.pub 
+                cat /tmp/openstack.pub >> /home/cloud-user/.ssh/authorized_keys
+                cat /tmp/openstack.pub >> /home/cloud-user/.ssh/openstack.pub 
+                curl -o /tmp/openstack.pem http://www.opentlc.com/download/ansible_bootcamp/openstack_keys/openstack.pem
+                cat /tmp/openstack.pem >> /home/cloud-user/.ssh/openstack.pem
+                curl -o /tmp/internal.repo http://www.opentlc.com/download/ansible_bootcamp/repo/internal.repo
+                cp /tmp/internal.repo /etc/yum.repos.d/internal.repo
   - app2:
       name: app2
       image: rhel-guest
@@ -23,10 +29,16 @@ servers:
       security_group: apps
       net_name: int_network
       floating_ip_address: ext_network
-      meta: group=apps, deployment_name=QA
+      meta: group=apps_servers, deployment_name=QA
       userdata: |
                 #!/bin/bash
-                curl -o /tmp/openstack.pub http://www.opentlc.com/download/ansible_bootcamp/openstack_keys/openstack.pub cat /tmp/openstack.pub >> /home/cloud-user/.ssh/authorized_keys
+                curl -o /tmp/openstack.pub http://www.opentlc.com/download/ansible_bootcamp/openstack_keys/openstack.pub 
+                cat /tmp/openstack.pub >> /home/cloud-user/.ssh/authorized_keys
+                cat /tmp/openstack.pub >> /home/cloud-user/.ssh/openstack.pub 
+                curl -o /tmp/openstack.pem http://www.opentlc.com/download/ansible_bootcamp/openstack_keys/openstack.pem
+                cat /tmp/openstack.pem >> /home/cloud-user/.ssh/openstack.pem
+                curl -o /tmp/internal.repo http://www.opentlc.com/download/ansible_bootcamp/repo/internal.repo
+                cp /tmp/internal.repo /etc/yum.repos.d/internal.repo
   - db:
       name: db
       image: rhel-guest
@@ -35,10 +47,16 @@ servers:
       security_group: db
       net_name: int_network
       floating_ip_address: ext_network
-      meta: group=apps, deployment_name=QA
+      meta: group=databases_servers, deployment_name=QA
       userdata: |
-              #!/bin/bash
-              curl -o /tmp/openstack.pub http://www.opentlc.com/download/ansible_bootcamp/openstack_keys/openstack.pub cat /tmp/openstack.pub >> /home/cloud-user/.ssh/authorized_keys
+                #!/bin/bash
+                curl -o /tmp/openstack.pub http://www.opentlc.com/download/ansible_bootcamp/openstack_keys/openstack.pub 
+                cat /tmp/openstack.pub >> /home/cloud-user/.ssh/authorized_keys
+                cat /tmp/openstack.pub >> /home/cloud-user/.ssh/openstack.pub 
+                curl -o /tmp/openstack.pem http://www.opentlc.com/download/ansible_bootcamp/openstack_keys/openstack.pem
+                cat /tmp/openstack.pem >> /home/cloud-user/.ssh/openstack.pem
+                curl -o /tmp/internal.repo http://www.opentlc.com/download/ansible_bootcamp/repo/internal.repo
+                cp /tmp/internal.repo /etc/yum.repos.d/internal.repo
   - frontend:
       name: frontend
       image: rhel-guest
@@ -47,45 +65,13 @@ servers:
       security_group: frontend
       net_name: int_network
       floating_ip_address: ext_network
-      meta: group=apps, deployment_name=QA
+      meta: group=frontends_servers, deployment_name=QA
       userdata: |
-              #!/bin/bash
-              curl -o /tmp/openstack.pub http://www.opentlc.com/download/ansible_bootcamp/openstack_keys/openstack.pub cat /tmp/openstack.pub >> /home/cloud-user/.ssh/authorized_keys
-              
-osp_servers:
-  frontend:
-    name: frontend
-    state: present
-    image: rhel-guest
-    key_name: ansible_ssh
-    flavor: m1.medium
-    security_group: frontend
-    meta:
-      - { group: frontends, deployment_name: QA}
-  app1:
-    name: app1
-    state: present
-    image: rhel-guest
-    key_name: ansible_ssh
-    flavor: m1.medium
-    security_group: apps
-    meta:
-      - { group: apps, deployment_name: QA}
-  app2:
-    name: app2
-    state: present
-    image: rhel-guest
-    key_name: ansible_ssh
-    flavor: m1.medium
-    security_group: apps
-    meta:
-      - { group: apps, deployment_name: QA}
-  db:
-    name: db
-    state: present
-    image: rhel-guest
-    key_name: ansible_ssh
-    flavor: m1.medium
-    security_group: db
-    meta:
-      - { group: appdbs, deployment_name: QA}
+                #!/bin/bash
+                curl -o /tmp/openstack.pub http://www.opentlc.com/download/ansible_bootcamp/openstack_keys/openstack.pub 
+                cat /tmp/openstack.pub >> /home/cloud-user/.ssh/authorized_keys
+                cat /tmp/openstack.pub >> /home/cloud-user/.ssh/openstack.pub 
+                curl -o /tmp/openstack.pem http://www.opentlc.com/download/ansible_bootcamp/openstack_keys/openstack.pem
+                cat /tmp/openstack.pem >> /home/cloud-user/.ssh/openstack.pem
+                curl -o /tmp/internal.repo http://www.opentlc.com/download/ansible_bootcamp/repo/internal.repo
+                cp /tmp/internal.repo /etc/yum.repos.d/internal.repo
