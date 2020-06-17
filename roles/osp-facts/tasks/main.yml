@@ -11,6 +11,7 @@
       # ansible_ssh_private_key_file: ~/.ssh/openstack.pem
       # ansible_ssh_user: cloud-user
      with_items: "{{result.openstack_servers}}"
+   - debug: var=result
    - name: Add host
      add_host:
       name: "{{ item.public_v4 }}"
