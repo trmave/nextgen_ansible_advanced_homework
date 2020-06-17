@@ -2,7 +2,7 @@
 # vars file for osp.servers
 cloud_name: openstack
 
-servers:
+osp_servers:
   - app1:
       name: app1
       image: rhel-guest

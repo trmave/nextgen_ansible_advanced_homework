@@ -16,7 +16,7 @@
       - net-name: "{{item.value.net_name}}"
     meta: "{{item.value.meta}}"
     userdata: "{{item.value.userdata}}"
-  with_dict: "{{servers}}"
+  with_dict: "{{osp_servers}}"
 
 - name: Add floating IP to instance
   os_floating_ip:
@@ -27,4 +27,4 @@
     network: "{{ item.value.floating_ip_address }}"
     wait: true
     timeout: 200
-  with_dict: "{{ servers }}"
+  with_dict: "{{ osp_servers }}"
