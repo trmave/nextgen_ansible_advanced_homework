@@ -1,6 +1,6 @@
 - name: Create m2.small flavor
   os_nova_flavor:
-     cloud: ospcloud
+     cloud: openstack
      state: present
      name: m2.small
      ram: 2048

@@ -3,7 +3,7 @@
   tasks:
   - name: OpenStack servers
     os_server_facts:
-     cloud: ospcloud
+     cloud: openstack
      server: 'frontend'
     register: openstack_info
     tags:

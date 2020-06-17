@@ -6,7 +6,7 @@
       - tested
 - name: Create openstack image
   os_image:
-     cloud: ospcloud
+     cloud: openstack
      name: rhel-guest
      container_format: bare
      disk_format: qcow2
