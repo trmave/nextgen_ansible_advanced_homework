@@ -11,7 +11,7 @@ osp_servers:
       security_group: apps
       net_name: int_network
       floating_ip_address: ext_network
-      meta: group=apps-servers,deployment_name=QA
+      meta: group=apps_servers,deployment_name=QA
       userdata: |
                 #!/bin/bash
                 curl -o /tmp/openstack.pub http://www.opentlc.com/download/ansible_bootcamp/openstack_keys/openstack.pub 

@@ -7,7 +7,7 @@
 
 
 - name: setup load-balancer tier
-  hosts: frontends
+  hosts: frontends_servers
   become: yes
   roles:
     - {name: base-config, tags: base-config}
@@ -16,7 +16,7 @@
 # Setup application servers tier
 
 - name: setup app tier
-  hosts: apps
+  hosts: apps_servers
   become: yes
   gather_facts: false
   roles:
