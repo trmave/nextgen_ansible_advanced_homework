@@ -15,9 +15,14 @@
   command: whoami 
   register: username_on_the_host
 - name: Install openstack library
-  command: touch file
+  command: hostname
+  register: username_on_the_host3
+- name: Install openstack library
+  command: pwd
+  register: username_on_the_host2
 - debug: var=username_on_the_host
-
+- debug: var=username_on_the_host2
+- debug: var=username_on_the_host3
 - name: Create clouds.yaml file
   blockinfile:
     create: yes

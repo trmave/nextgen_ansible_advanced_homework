@@ -1,8 +1,9 @@
 export OPENTLC_KEY=/root/.ssh/mykey.pem
-export OSP_GUID=23a7
+export OSP_GUID=1901
 export OPENTLC_ID=tulio.manrique-ibm.com
+export OPENTLC_PASSWORD=x@HG87$G!hFj@$V
 export OSP_DOMAIN=green.osp.opentlc.com
-export TOWER_GUID=8672
+export TOWER_GUID=594c
 export GITHUB_REPO=https://github.com/trmave/nextgen_ansible_advanced_homework.git
 export JQ_REPO_BASE=http://www.opentlc.com/download/ansible_bootcamp
 export REGION=us-east-1
