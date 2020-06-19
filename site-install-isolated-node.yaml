@@ -5,6 +5,11 @@
     OPENTLC_ID: "{{ lookup('env','OPENTLC_ID') }}"
   gather_facts: false
   tasks:
+  - name: Install Lib selinux
+    pip:
+     name: selinux
+     state: latest
+
   - name: Append inventory file
     blockinfile:
       path: /root/ansible-tower-setup-latest/inventory
