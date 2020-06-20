@@ -1,17 +1,19 @@
 ---
 # Initial, common, system setup steps
-- name: install base tools and packages
-  yum:
-    name: "{{ item }}" 
-    state: present
-  with_items:
-    - python3
-    - httpie
-    - python-pip
-    - git
-    - ansible
-    - httpie
-    
+- name: get the username running the deploy
+  become: false
+  command: python --version
+  register: username_on_the_host
+
+- debug: var=username_on_the_host
+
+- name: enable sudo without tty for some ansible commands
+  replace:
+    path: /etc/sudoers
+    regexp: '^Defaults\s*requiretty'
+    replace: 'Defaults  !requiretty'
+    backup: yes
+
 - name: enable repos
   template:
     src: repos_template.j2
@@ -38,12 +40,15 @@
 - name: Run yum clean
   command: yum clean all
 
+- name: install base tools and packages
+  yum:
+    name: "{{ item }}" 
+    state: present
+  with_items:
+    - python3
+    - httpie
+    - python-pip
+    - git
+    - ansible
+    - httpie
 
-
-
-- name: enable sudo without tty for some ansible commands
-  replace:
-    path: /etc/sudoers
-    regexp: '^Defaults\s*requiretty'
-    replace: 'Defaults  !requiretty'
-    backup: yes
