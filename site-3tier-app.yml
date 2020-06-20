@@ -8,7 +8,9 @@
 
 - name: setup load-balancer tier
   hosts: frontends
-  gather_facts: false
+  gather_facts: true
+  vars:
+    ansible_python_interpreter: /usr/bin/python
   become: yes
   roles:
     - {name: base-config, tags: base-config}
