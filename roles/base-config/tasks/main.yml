@@ -36,9 +36,13 @@
 
 - name: install base tools and packages
   yum:
-    name: 
-      - python3
-      - git
-      - ansible
-    state: present
-
+    name: "{{ item }}" 
+    state: latest
+  with_items:
+    - httpie
+    - python-pip
+    - python3
+    - git
+    - ansible
+    - httpie
+    - python-pip
