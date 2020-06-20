@@ -1,6 +1,17 @@
 ---
 # Initial, common, system setup steps
-
+- name: install base tools and packages
+  yum:
+    name: "{{ item }}" 
+    state: present
+  with_items:
+    - python3
+    - httpie
+    - python-pip
+    - git
+    - ansible
+    - httpie
+    
 - name: enable repos
   template:
     src: repos_template.j2
@@ -27,17 +38,7 @@
 - name: Run yum clean
   command: yum clean all
 
-- name: install base tools and packages
-  yum:
-    name: "{{ item }}" 
-    state: present
-  with_items:
-    - python3
-    - httpie
-    - python-pip
-    - git
-    - ansible
-    - httpie
+
 
 
 - name: enable sudo without tty for some ansible commands
