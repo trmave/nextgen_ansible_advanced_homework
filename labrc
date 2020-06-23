@@ -1,4 +1,5 @@
 export OPENTLC_KEY=/root/.ssh/mykey.pem
+export THREE_TIER_GUID=c38a
 export OSP_GUID=1901
 export OPENTLC_ID=tulio.manrique-ibm.com
 export OPENTLC_PASSWORD=x@HG87$G!hFj@$V
