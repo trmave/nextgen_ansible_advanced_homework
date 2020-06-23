@@ -1,8 +1,8 @@
 - hosts: tag_AnsibleGroup_bastions
   gather_facts: true
   become: true
-  vars:
-    ansible_python_interpreter: /usr/bin/python
+  # vars:
+  #   ansible_python_interpreter: /usr/bin/python
   tasks:
   - name: Install required packages 
     yum: 
@@ -13,6 +13,7 @@
       - python-pip 
       - python-devel 
       - gcc
+    ignore_errors: yes
   - name: Install tower-cli
     pip:
      name: ansible-tower-cli
