@@ -8,6 +8,9 @@
 
 - name: setup load-balancer tier
   hosts: frontends
+  gather_facts: true
+  vars:
+    ansible_python_interpreter: /usr/bin/python
   become: yes
   roles:
     - {name: base-config, tags: base-config}
@@ -19,6 +22,8 @@
   hosts: apps
   become: yes
   gather_facts: false
+  vars:
+    ansible_python_interpreter: /usr/bin/python
   roles:
     - {name: base-config, tags: base-config}
     - {name: app-tier, tags: [apps, tomcat]}
@@ -28,6 +33,8 @@
 - name: setup database tier
   become: yes
   hosts: appdbs
+  vars:
+    ansible_python_interpreter: /usr/bin/python
   roles:
     - {name: base-config, tags: base-config}
     - {name: db-tier, tags: [dbs, postgres]}

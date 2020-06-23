@@ -1,5 +1,11 @@
 ---
 # Initial, common, system setup steps
+- name: get the username running the deploy
+  become: false
+  command: python --version
+  register: username_on_the_host
+
+- debug: var=username_on_the_host
 
 - name: enable sudo without tty for some ansible commands
   replace:
@@ -36,9 +42,13 @@
 
 - name: install base tools and packages
   yum:
-    name: 
-      - python3
-      - git
-      - ansible
+    name: "{{ item }}" 
     state: present
+  with_items:
+    - python3
+    - httpie
+    - python-pip
+    - git
+    - ansible
+    - httpie
 

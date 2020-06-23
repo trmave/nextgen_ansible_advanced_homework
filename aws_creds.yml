@@ -1,6 +1,8 @@
 - hosts: tag_AnsibleGroup_bastions
   gather_facts: true
   become: true
+  # vars:
+  #   ansible_python_interpreter: /usr/bin/python
   tasks:
   - name: Install required packages 
     yum: 
@@ -11,6 +13,7 @@
       - python-pip 
       - python-devel 
       - gcc
+    ignore_errors: yes
   - name: Install tower-cli
     pip:
      name: ansible-tower-cli
@@ -23,6 +26,9 @@
   - name: List key files
     shell: (cd /root/.ssh; find . -maxdepth 1 -type f -iname '*key.pem')| cut -d'/' -f2
     register: file_to_copy
+  - name: show me da key
+    debug:
+      msg: file_to_copy
   - name: Tower Creds key file
     tower_credential:
       name: Creds for AWS instances
